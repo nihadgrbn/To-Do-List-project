@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         todoItem.addEventListener('dblclick', () => editTodoItem(todoItem, index));
 
         const deleteButton = document.createElement('img');
-        deleteButton.src = 'image/cancel.svg';  // Make sure the image path is correct
+        deleteButton.src = 'image/cancel.svg';  
         deleteButton.alt = 'Delete';
         deleteButton.classList.add('delete-todo');
         todoItem.appendChild(deleteButton);
