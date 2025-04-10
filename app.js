@@ -142,36 +142,52 @@ document.addEventListener('DOMContentLoaded', () => {
 		todos.sort((a, b) => {
 			const num_a = parseFloat(a);
 			const num_b = parseFloat(b);
-
+	
 			if (!isNaN(num_a) && !isNaN(num_b)) {
-				return isSortedAsc ? num_a - num_b : num_b - num_a;
+				if (isSortedAsc) {
+					return num_a - num_b;
+				} else {
+					return num_b - num_a;
+				}
 			} else {
-				return isSortedAsc ? a.localeCompare(b) : b.localeCompare(a);
+				if (isSortedAsc) {
+					return a.localeCompare(b);
+				} else {
+					return b.localeCompare(a);
+				}
 			}
 		});
-
-		sortButton.src = isSortedAsc
-			? '../image/up-sort-black.svg'
-			: '../image/down-sort-black.svg';
-
+	
+		if (isSortedAsc) {
+			sortButton.src = '../image/up-sort-black.svg';
+		} else {
+			sortButton.src = '../image/down-sort-black.svg';
+		}
+	
 		displayTodos();
 	}
+	
 
 	function changeIconToBlack() {
-		sortButton.src = isSortedAsc
-			? '../image/up-sort-black.svg'
-			: '../image/down-sort-black.svg';
+		if (isSortedAsc) {
+			sortButton.src = '../image/up-sort-black.svg';
+		} else {
+			sortButton.src = '../image/down-sort-black.svg';
+		}
 	}
-
+	
 	function changeIconToWhite() {
-		sortButton.src = isSortedAsc
-			? '../image/up-sort.svg'
-			: '../image/down-sort.svg';
+		if (isSortedAsc) {
+			sortButton.src = '../image/up-sort.svg';
+		} else {
+			sortButton.src = '../image/down-sort.svg';
+		}
 	}
-
+	
 	function toggleView() {
 		formContainer.style.display = 'none';
 	}
+	
 
 	function showList() {
 		todoList.classList.remove('hidden');
