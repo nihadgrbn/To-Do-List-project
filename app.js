@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	
 		if (isSortedAsc) {
-			sortButton.src = '../image/up-sort-black.svg';
+			sortButton.src = '../image/upsort-black.svg';
 		} else {
-			sortButton.src = '../image/down-sort-black.svg';
+			sortButton.src = '../image/downsort-black.svg';
 		}
 	
 		displayTodos();
@@ -170,17 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function changeIconToBlack() {
 		if (isSortedAsc) {
-			sortButton.src = '../image/up-sort-black.svg';
+			sortButton.src = '../image/upsort-black.svg';
 		} else {
-			sortButton.src = '../image/down-sort-black.svg';
+			sortButton.src = '../image/downsort-black.svg';
 		}
 	}
 	
 	function changeIconToWhite() {
 		if (isSortedAsc) {
-			sortButton.src = '../image/up-sort.svg';
+			sortButton.src = '../image/upsort.svg';
 		} else {
-			sortButton.src = '../image/down-sort.svg';
+			sortButton.src = '../image/downsort.svg';
 		}
 	}
 	
