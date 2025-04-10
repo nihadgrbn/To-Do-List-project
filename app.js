@@ -59,5 +59,60 @@ document.addEventListener('DOMContentLoaded', () => {
 		todos.forEach((todoText, index) => createTodoItem(todoText, index));
 	}
 
+	function createTodoItem(todoText, index) {
+		const todoItem = document.createElement('li');
+		todoItem.innerText = todoText;
+		todoItem.draggable = true;
+		todoItem.dataset.index = index;
 
+		todoItem.addEventListener('dragstart', dragStart);
+		todoItem.addEventListener('dragover', dragOver);
+		todoItem.addEventListener('drop', drop);
+		todoItem.addEventListener('dblclick', () => editTodoItem(todoItem, index));
+
+		const deleteButton = document.createElement('img');
+		deleteButton.src = '../image/cancel.svg';
+		deleteButton.alt = 'Delete';
+		deleteButton.classList.add('delete-todo');
+		todoItem.appendChild(deleteButton);
+		todoList.appendChild(todoItem);
+
+		deleteButton.addEventListener('click', () => {
+			todos.splice(index, 1);
+			displayTodos();
+		});
+	}
+
+
+
+	function editTodoItem(todoItem, index) {
+		const currentText = todoItem.innerText;
+		const input = document.createElement('input');
+		input.type = 'text';
+		input.value = currentText;
+		input.classList.add('edit-input');
+
+		todoItem.innerText = '';
+		todoItem.appendChild(input);
+		input.focus();
+
+		function saveEdit() {
+			const newText = input.value.trim();
+			if (newText) {
+				todos[index] = newText;
+			}
+			displayTodos();
+		}
+
+		input.addEventListener('blur', saveEdit);
+		input.addEventListener('keypress', (e) => {
+			if (e.key === 'Enter') saveEdit();
+		});
+	}
+
+	
+	function showList() {
+		todoList.classList.remove('hidden');
+		toggleView();
+	}
 });
