@@ -209,3 +209,13 @@ ul li {
     margin-top: 8px;
     display: none;
 }
+.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+    background-color: #f3e8ff;
+}
+
+.drag-over {
+    border: 2px dashed #833ae0;
+    background-color: #faf5ff;
+}

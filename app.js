@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	todoList.classList.add('hidden');
 
 	addButton.addEventListener('click', () => {
-		if (formContainer.style.display === 'blocka') {
+		if (formContainer.style.display === 'block') {
 			addTodo();
 		} else {
 			formContainer.style.display = 'block';
@@ -83,7 +83,29 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	
+	function dragStart(event) {
+		event.dataTransfer.setData('text/plain', event.target.dataset.index);
+		event.target.classList.add('dragging');
+	}
+
+	function dragOver(event) {
+		event.preventDefault();
+		event.target.classList.add('drag-over');
+	}
+
+	function drop(event) {
+		event.preventDefault();
+		const draggedIndex = event.dataTransfer.getData('text/plain');
+		const targetIndex = event.target.dataset.index;
+
+		if (draggedIndex !== targetIndex) {
+			const [draggedItem] = todos.splice(draggedIndex, 1);
+			todos.splice(targetIndex, 0, draggedItem);
+			displayTodos();
+		}
+		event.target.classList.remove('drag-over');
+	}
+
 	function editTodoItem(todoItem, index) {
 		const currentText = todoItem.innerText;
 		const input = document.createElement('input');
@@ -121,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const num_a = parseFloat(a);
 			const num_b = parseFloat(b);
 
-			if (!isNaN(aNum) && !isNaN(bNum)) {
+			if (!isNaN(num_a) && !isNaN(num_b)) {
 				return isSortedAsc ? num_a - num_b : num_b - num_a;
 			} else {
 				return isSortedAsc ? a.localeCompare(b) : b.localeCompare(a);
