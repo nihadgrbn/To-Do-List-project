@@ -127,7 +127,6 @@ input:focus {
 
 .black-down {
     cursor: pointer;
-    transition: 0.3 ease;
     display: none;
 }
 
@@ -146,7 +145,7 @@ input:focus {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: background-color 0.3s ease; 
+    
     
 }
 
