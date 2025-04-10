@@ -83,8 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-
-
+	
 	function editTodoItem(todoItem, index) {
 		const currentText = todoItem.innerText;
 		const input = document.createElement('input');
@@ -110,7 +109,48 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	
+	function clearInput() {
+		inputField.value = '';
+		inputField.focus();
+		formContainer.style.display = 'block';
+	}
+
+	function toggleSort() {
+		isSortedAsc = !isSortedAsc;
+		todos.sort((a, b) => {
+			const num_a = parseFloat(a);
+			const num_b = parseFloat(b);
+
+			if (!isNaN(aNum) && !isNaN(bNum)) {
+				return isSortedAsc ? num_a - num_b : num_b - num_a;
+			} else {
+				return isSortedAsc ? a.localeCompare(b) : b.localeCompare(a);
+			}
+		});
+
+		sortButton.src = isSortedAsc
+			? '../image/up-sort-black.svg'
+			: '../image/down-sort-black.svg';
+
+		displayTodos();
+	}
+
+	function changeIconToBlack() {
+		sortButton.src = isSortedAsc
+			? '../image/up-sort-black.svg'
+			: '../image/down-sort-black.svg';
+	}
+
+	function changeIconToWhite() {
+		sortButton.src = isSortedAsc
+			? '../image/up-sort.svg'
+			: '../image/down-sort.svg';
+	}
+
+	function toggleView() {
+		formContainer.style.display = 'none';
+	}
+
 	function showList() {
 		todoList.classList.remove('hidden');
 		toggleView();
