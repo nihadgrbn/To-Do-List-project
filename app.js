@@ -87,24 +87,33 @@ document.addEventListener('DOMContentLoaded', () => {
         event.dataTransfer.setData('text/plain', event.target.dataset.index);
         event.target.classList.add('dragging');
     }
-
+    
     function dragOver(event) {
         event.preventDefault();
-        event.target.classList.add('drag-over');
+        const draggingItem = document.querySelector('.dragging');
+        const target = event.target.closest('li');
+    
+        if (target && target !== draggingItem) {
+            target.classList.add('drag-over');
+        }
     }
-
+    
     function drop(event) {
         event.preventDefault();
-        const draggedIndex = event.dataTransfer.getData('text/plain');
-        const targetIndex = event.target.dataset.index;
-
-        if (draggedIndex !== targetIndex) {
-            const [draggedItem] = todos.splice(draggedIndex, 1);
-            todos.splice(targetIndex, 0, draggedItem);
-            displayTodos();
-        }
-        event.target.classList.remove('drag-over');
+        const draggingItem = document.querySelector('.dragging');
+        const target = event.target.closest('li');
+    
+        if (!target || target === draggingItem) return;
+    
+        const draggedIndex = parseInt(draggingItem.dataset.index);
+        const targetIndex = parseInt(target.dataset.index);
+    
+        const [draggedItem] = todos.splice(draggedIndex, 1);
+        todos.splice(targetIndex, 0, draggedItem);
+    
+        displayTodos();
     }
+    
 
     function editTodoItem(todoItem, index) {
         const currentText = todoItem.innerText;

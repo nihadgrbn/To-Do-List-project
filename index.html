@@ -13,26 +13,27 @@
         <div class="line"></div>
         <div class="container2">
             <h1>To-Do List</h1>
+
             <div class="container-icon">
-                <img src="image/downsort.svg" alt="White arrow down" class="icon white-down" />
-                <img src="image/downsort-black.svg" alt="Black arrow down" class="icon black-down" />
+                <img src="image/downsort.svg" alt="Sort" class="icon white-down" style="display: none;" />
             </div>
-            <div class="form">
-                <form action="#" method="post">
-                    <input type="text" id="todo-input" placeholder="" class="todo-input" />
-                    <label for="todo-input">
-                        <img src="image/cancel.svg" alt="Cancel input" class="cancel-image" width="20" height="20" />
-                    </label>
-                </form>
+
+            <div class="form" style="display: none;">
+                <input type="text" id="todo-input" placeholder="Enter a task..." class="todo-input" />
+                <img src="image/cancel.svg" alt="Cancel input" class="cancel-image" width="20" height="20" />
             </div>
-            <ul class="todo-list"></ul>
+
+            <div class="error-message" style="display: none; color: red;"></div>
+
+            <ul class="todo-list hidden"></ul>
+
             <div class="submit">
                 <div class="add">+</div>
                 <div class="show" id="show-button">Add</div>
             </div>
         </div>
     </div>
-    <div class="error-message" style="display:none; color: red;"></div>
+
     <script src="./app.js"></script>
 </body>
 
