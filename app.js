@@ -55,7 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayTodos() {
         todoList.innerHTML = '';
         todos.forEach((todoText, index) => createTodoItem(todoText, index));
+    
+        if (todos.length === 0) {
+            formContainer.style.display = 'block';   
+            inputField.focus();                      
+            sortButton.style.display = 'none';       
+        }
     }
+    
 
     function createTodoItem(todoText, index) {
         const todoItem = document.createElement('li');
