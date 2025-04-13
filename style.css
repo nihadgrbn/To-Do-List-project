@@ -86,7 +86,6 @@ input:focus {
     animation: focusAnimation 0.5s forwards;
     outline: none;
 }
-
 .submit {
     font-weight: 500;
     color: white;
@@ -96,8 +95,12 @@ input:focus {
     justify-content: center;
     gap: 20px;
     background-color: #833ae0;
-    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
 }
+
 
 .submit:hover {
     transition: 0.3s ease-in;
@@ -117,7 +120,7 @@ input:focus {
 }
 
 .show {
-    margin-right: 10px;
+    margin-right: 25px;
 }
 
 .black-down {
@@ -128,28 +131,13 @@ input:focus {
 
 
 
-.submit {
-    font-weight: 500;
-    color: white;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    background-color: #833ae0;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
 
-
-}
 
 ul {
     position: relative;
     width: 350px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 10px;
     background-color: #ffffff;
 
 
