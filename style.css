@@ -150,10 +150,10 @@ ul li {
     overflow-wrap: break-word;
     /* border-bottom: 1px solid #e0e0e0; */
 }
-
+/* 
 ul li:not(:last-child) {
-    /* border-bottom: 1px solid #dcdcdc; */
-}
+    border-bottom: 1px solid #dcdcdc;
+} */
 
 
 .delete-todo {
