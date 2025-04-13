@@ -148,11 +148,11 @@ ul li {
     padding-right: 66px;
     position: relative;
     overflow-wrap: break-word;
-    border-bottom: 1px solid #e0e0e0;
+    /* border-bottom: 1px solid #e0e0e0; */
 }
 
 ul li:not(:last-child) {
-    border-bottom: 1px solid #dcdcdc;
+    /* border-bottom: 1px solid #dcdcdc; */
 }
 
 
@@ -212,7 +212,7 @@ li.dragging {
 
 
 .cancel-image:hover {
-    background-color: #e0d4f9;
+    background-color: #833ae0;
     transform: scale(1.2);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -246,6 +246,9 @@ li.dragging {
     background-color: #833ae0;
     border-radius: 50%;
     cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+    top: 15px;
 }
 @media (max-width: 480px) {
     .container {
