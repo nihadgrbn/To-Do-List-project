@@ -8,19 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelButton = document.querySelector('.cancel-image');
     const sortButton = document.querySelector('.white-down');
     const showButton = document.querySelector('#show-button');
-    const submitContainer = document.querySelector('.submit');
+    const submitContainer = document.querySelector('.submit .show');
     const formContainer = document.querySelector('.form');
-    const errorMessage = document.querySelector('.error-message');
 
-    todoList.classList.add('hidden');
+    formContainer.style.display = 'block';
+    inputField.focus();
 
     addButton.addEventListener('click', () => {
-        if (formContainer.style.display === 'block') {
-            addTodo();
-        } else {
-            formContainer.style.display = 'block';
-        }
+        formContainer.style.display = 'block';
+        inputField.focus();
     });
+    submitContainer.addEventListener('click', () => {
+        addTodo();
+    });
+    
 
     cancelButton.addEventListener('click', toggleView);
     sortButton.addEventListener('click', toggleSort);
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputField.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            addTodo();
+            addTodo();   
         }
     });
 
@@ -43,14 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             displayTodos();
             clearInput();
             isSortedAsc = false;
-            errorMessage.style.display = 'none';
+            
 
             if (todos.length > 0) {
                 sortButton.style.display = 'block';
             }
-        } else {
-            errorMessage.textContent = 'Please add a to-do';
-            errorMessage.style.display = 'block';
         }
     }
 
@@ -71,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         todoItem.addEventListener('dblclick', () => editTodoItem(todoItem, index));
 
         const deleteButton = document.createElement('img');
-        deleteButton.src = 'image/cancel.svg';  
+        deleteButton.src = 'image/cancel.svg';
         deleteButton.alt = 'Delete';
         deleteButton.classList.add('delete-todo');
         todoItem.appendChild(deleteButton);
@@ -87,33 +85,32 @@ document.addEventListener('DOMContentLoaded', () => {
         event.dataTransfer.setData('text/plain', event.target.dataset.index);
         event.target.classList.add('dragging');
     }
-    
+
     function dragOver(event) {
         event.preventDefault();
         const draggingItem = document.querySelector('.dragging');
         const target = event.target.closest('li');
-    
+
         if (target && target !== draggingItem) {
             target.classList.add('drag-over');
         }
     }
-    
+
     function drop(event) {
         event.preventDefault();
         const draggingItem = document.querySelector('.dragging');
         const target = event.target.closest('li');
-    
+
         if (!target || target === draggingItem) return;
-    
+
         const draggedIndex = parseInt(draggingItem.dataset.index);
         const targetIndex = parseInt(target.dataset.index);
-    
+
         const [draggedItem] = todos.splice(draggedIndex, 1);
         todos.splice(targetIndex, 0, draggedItem);
-    
+
         displayTodos();
     }
-    
 
     function editTodoItem(todoItem, index) {
         const currentText = todoItem.innerText;
@@ -151,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         todos.sort((a, b) => {
             const num_a = parseFloat(a);
             const num_b = parseFloat(b);
-    
+
             if (!isNaN(num_a) && !isNaN(num_b)) {
                 return isSortedAsc ? num_a - num_b : num_b - num_a;
             } else {
