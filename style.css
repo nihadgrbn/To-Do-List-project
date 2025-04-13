@@ -39,7 +39,7 @@ body {
 }
 
 .container2 {
-    width: 90%;
+    width: 85%;
     border-radius: 10px;
     flex-direction: column;
     display: flex;
@@ -47,6 +47,7 @@ body {
     justify-content: center;
     gap: 20px;
     padding: 0px 20px;
+    margin-bottom: 19px;
 }
 
 .line {
